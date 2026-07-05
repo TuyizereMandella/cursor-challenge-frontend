@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import { Heart, Syringe, Bell, ShieldAlert, Award, MapPin, CalendarDays, CheckCircle2, ArrowLeft } from "lucide-react";
+import { Heart, Syringe, Bell, MapPin, CheckCircle2, ArrowLeft } from "lucide-react";
 import type { ReactNode } from "react";
 import type { UserRole } from "@/types/auth";
-import { cn } from "@/lib/cn";
 
 interface AuthShellProps {
   role: UserRole;
@@ -22,7 +21,7 @@ export function AuthShell({ role, title, subtitle, children, footer }: AuthShell
       <div className="flex w-full max-w-[1000px] min-h-[620px] flex-col md:flex-row bg-white rounded-[32px] shadow-[0_24px_70px_rgba(27,54,93,0.12)] border border-slate-100/80 overflow-hidden">
         
         {/* Left Side: Illustrative Navy/Blue Panel */}
-        <div className="hidden md:flex flex-1 bg-gradient-to-br from-[#1B365D] via-[#1E40AF] to-[#2563EB] p-10 flex-col justify-between relative overflow-hidden text-white select-none">
+        <div className="hidden md:flex flex-1 bg-gradient-to-br from-[#1B365D] via-[#008B9B] to-[#14B8A6] p-10 flex-col justify-between relative overflow-hidden text-white select-none">
           {/* Background circles */}
           <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/5 blur-3xl pointer-events-none" />
           <div className="absolute -left-12 -bottom-12 h-64 w-64 rounded-full bg-white/10 blur-2xl pointer-events-none" />
