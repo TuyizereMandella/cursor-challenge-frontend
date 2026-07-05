@@ -341,3 +341,97 @@
     filter: drop-shadow(0 0 6px rgba(0, 139, 155, 0.45));
   }
 }
+
+/* Auth light theme styles */
+.auth-form-container label {
+  color: #1B365D !important; /* Force Navy color */
+  font-weight: 600 !important;
+}
+
+.auth-form-container input {
+  background-color: #F8FAFC !important;
+  border-color: #E2E8F0 !important;
+  color: #1B365D !important;
+  font-size: 0.875rem !important;
+}
+
+.auth-form-container input:hover {
+  border-color: #CBD5E1 !important;
+}
+
+.auth-form-container input:focus {
+  background-color: #FFFFFF !important;
+  border-color: #008B9B !important;
+  box-shadow: 0 0 0 2px rgba(0, 139, 155, 0.15) !important;
+  outline: none !important;
+}
+
+.auth-form-container input::placeholder {
+  color: #94A3B8 !important;
+}
+
+/* Primary buttons in auth form */
+.auth-form-container button[type="submit"] {
+  background-color: #1B365D !important;
+  color: #FFFFFF !important;
+  border-radius: 0.75rem !important;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(27, 54, 93, 0.15) !important;
+  font-weight: 600 !important;
+  height: 2.75rem !important;
+  transition: all 0.15s ease-in-out !important;
+}
+
+.auth-form-container button[type="submit"]:hover {
+  background-color: #233554 !important;
+  box-shadow: 0 6px 16px rgba(27, 54, 93, 0.25) !important;
+}
+
+/* Outline buttons in auth form (like Use Demo Account) */
+.auth-form-container button:not([type="submit"]) {
+  background-color: #FFFFFF !important;
+  color: #5A6B7D !important;
+  border-radius: 0.75rem !important;
+  border: 1px solid #E2E8F0 !important;
+  font-weight: 600 !important;
+  height: 2.75rem !important;
+  transition: all 0.15s ease-in-out !important;
+}
+
+.auth-form-container button:not([type="submit"]):hover {
+  background-color: #F8FAFC !important;
+  color: #1B365D !important;
+  border-color: #CBD5E1 !important;
+}
+
+/* Helper text & links inside auth form */
+.auth-form-container .text-danger-bright {
+  color: #EF4444 !important;
+}
+
+.auth-form-container legend {
+  color: #1B365D !important;
+}
+
+.auth-form-container fieldset p {
+  color: #5A6B7D !important;
+}
+
+.auth-form-container label.border-border-subtle {
+  border-color: #E2E8F0 !important;
+  background-color: #F8FAFC !important;
+}
+
+.auth-form-container label.border-accent\/30 {
+  border-color: rgba(0, 139, 155, 0.3) !important;
+  background-color: rgba(0, 139, 155, 0.04) !important;
+}
+
+.auth-form-container label span.text-slate-200 {
+  color: #1B365D !important;
+}
+
+.auth-form-container label span.text-slate-500 {
+  color: #5A6B7D !important;
+}
+
