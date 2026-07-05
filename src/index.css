@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    @apply border-border-subtle;
+  }
+
+  html {
+    @apply scroll-smooth antialiased;
+  }
+
+  body {
+    @apply min-h-screen bg-canvas font-sans text-slate-300;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+
+  ::selection {
+    @apply bg-accent/30 text-slate-100;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent-ring ring-offset-2 ring-offset-canvas;
+  }
+}
+
+@layer components {
+  .layout-shell {
+    @apply flex min-h-screen flex-col bg-canvas bg-mesh-dark;
+  }
+
+  .layout-sidebar {
+    @apply flex w-64 shrink-0 flex-col border-r border-border-subtle bg-surface/80 backdrop-blur-xl;
+  }
+
+  .layout-main {
+    @apply flex flex-1 flex-col overflow-hidden;
+  }
+
+  .layout-header {
+    @apply flex h-14 shrink-0 items-center justify-between border-b border-border-subtle bg-surface/60 px-6 backdrop-blur-xl;
+  }
+
+  .layout-content {
+    @apply flex-1 overflow-y-auto p-6;
+  }
+
+  .nav-link {
+    @apply flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-slate-400 transition-all duration-150;
+  }
+
+  .nav-link:hover {
+    @apply bg-surface-overlay/50 text-slate-200;
+  }
+
+  .nav-link-active {
+    @apply bg-accent-glow text-accent-bright shadow-glow-sm;
+    box-shadow: inset 0 0 0 1px rgba(16, 185, 129, 0.2);
+  }
+
+  .card {
+    @apply rounded-xl border border-border-subtle bg-surface-raised shadow-card;
+  }
+
+  .card-interactive {
+    @apply card transition-all duration-200 hover:border-border-strong hover:shadow-card-hover;
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+
+  .badge-active {
+    @apply badge bg-accent-glow text-accent-bright ring-1 ring-accent/30;
+  }
+
+  .badge-overdue {
+    @apply badge bg-alert-glow text-alert-bright ring-1 ring-alert/30;
+  }
+
+  .badge-neutral {
+    @apply badge bg-surface-overlay text-slate-400 ring-1 ring-border-subtle;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-slate-100 to-slate-400 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-accent {
+    @apply bg-gradient-to-r from-accent-bright to-accent bg-clip-text text-transparent;
+  }
+}
