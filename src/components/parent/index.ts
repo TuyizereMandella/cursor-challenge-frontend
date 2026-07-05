@@ -1,3 +1,4 @@
+export { ParentContactSummary } from "./ParentContactSummary";
 export { AddChildForm } from "./AddChildForm";
 export { EmptyState } from "./EmptyState";
 export { HospitalCard } from "./HospitalCard";

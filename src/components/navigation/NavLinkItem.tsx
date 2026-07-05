@@ -14,7 +14,7 @@ function navClassName(isActive: boolean, layout: "sidebar" | "bottom") {
 
   return cn(
     "flex flex-1 flex-col items-center gap-1 rounded-lg px-2 py-2 text-[10px] font-medium transition-all duration-150",
-    isActive ? "text-accent-bright" : "text-slate-500 hover:text-slate-300",
+    isActive ? "text-teal" : "text-health-text-muted hover:text-navy",
   );
 }
 
@@ -40,7 +40,7 @@ export function NavLinkItem({
           className={cn(
             layout === "sidebar" ? "h-4 w-4 shrink-0" : "h-5 w-5",
             layout === "bottom" &&
-              "group-[[aria-current=page]]:drop-shadow-[0_0_6px_rgba(16,185,129,0.5)]",
+              "group-[[aria-current=page]]:drop-shadow-[0_0_6px_rgba(232,137,154,0.45)]",
           )}
           aria-hidden="true"
         />

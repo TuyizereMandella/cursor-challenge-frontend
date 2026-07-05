@@ -1,14 +1,16 @@
 import { useState } from "react";
-import { NavLink, Outlet } from "react-router-dom";
-import { ArrowLeft, Bell, Syringe } from "lucide-react";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { ArrowLeft, Bell, LogOut, Syringe } from "lucide-react";
 import { BottomNav, SidebarNav } from "@/components/navigation";
 import { NotificationDrawer } from "@/components/parent";
 import { Button } from "@/components/ui";
 import { parentNavItems } from "@/config/navigation";
-import { ParentProvider, useParentContext } from "@/contexts";
+import { ParentProvider, useAuth, useParentContext } from "@/contexts";
 import { cn } from "@/lib/cn";
 
 function ParentLayoutShell() {
+  const { logout } = useAuth();
+  const navigate = useNavigate();
   const {
     user,
     children,
@@ -28,18 +30,18 @@ function ParentLayoutShell() {
     item.label === "Reminders" ? unreadReminders : undefined;
 
   return (
-    <div className="flex min-h-screen flex-col md:flex-row">
+    <div className="parent-theme flex min-h-screen flex-col md:flex-row">
       <aside
         className="layout-sidebar hidden md:flex"
         aria-label="Parent navigation"
       >
-        <div className="flex h-14 items-center gap-2.5 border-b border-border-subtle px-5">
-          <div className="flex h-7 w-7 items-center justify-center rounded-md bg-accent-glow ring-1 ring-accent/30">
-            <Syringe className="h-3.5 w-3.5 text-accent-bright" aria-hidden="true" />
+        <div className="flex h-14 items-center gap-2.5 border-b border-health-muted px-5">
+          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-teal-glow ring-1 ring-teal/30">
+            <Syringe className="h-3.5 w-3.5 text-teal" aria-hidden="true" />
           </div>
           <div>
-            <p className="text-xs font-semibold text-slate-100">VaxReminder</p>
-            <p className="text-[10px] font-medium uppercase tracking-wider text-slate-500">
+            <p className="text-xs font-semibold text-navy">VaxReminder</p>
+            <p className="text-[10px] font-medium uppercase tracking-wider text-health-text-muted">
               Parent Space
             </p>
           </div>
@@ -59,7 +61,7 @@ function ParentLayoutShell() {
         <header className="layout-header">
           <div className="flex items-center gap-3">
             <div
-              className="flex h-8 w-8 items-center justify-center rounded-full bg-accent-glow text-xs font-semibold text-accent-bright ring-1 ring-accent/30"
+              className="flex h-8 w-8 items-center justify-center rounded-full bg-teal-glow text-xs font-semibold text-teal ring-1 ring-teal/30"
               aria-hidden="true"
             >
               {user.initials}
@@ -70,30 +72,44 @@ function ParentLayoutShell() {
             </div>
           </div>
 
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => setDrawerOpen(true)}
-            aria-label={
-              unreadNotificationCount > 0
-                ? `Open notifications, ${unreadNotificationCount} unread`
-                : "Open notifications"
-            }
-            className="relative"
-          >
-            <Bell className="h-4 w-4" aria-hidden="true" />
-            <span className="hidden sm:inline">Notifications</span>
-            {unreadNotificationCount > 0 && (
-              <span
-                className={cn(
-                  "absolute -right-1.5 -top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-alert px-1 text-[9px] font-bold text-canvas",
-                )}
-                aria-hidden="true"
-              >
-                {unreadNotificationCount > 9 ? "9+" : unreadNotificationCount}
-              </span>
-            )}
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setDrawerOpen(true)}
+              aria-label={
+                unreadNotificationCount > 0
+                  ? `Open notifications, ${unreadNotificationCount} unread`
+                  : "Open notifications"
+              }
+              className="relative"
+            >
+              <Bell className="h-4 w-4" aria-hidden="true" />
+              <span className="hidden sm:inline">Notifications</span>
+              {unreadNotificationCount > 0 && (
+                <span
+                  className={cn(
+                    "absolute -right-1.5 -top-1.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-alert px-1 text-[9px] font-bold text-canvas",
+                  )}
+                  aria-hidden="true"
+                >
+                  {unreadNotificationCount > 9 ? "9+" : unreadNotificationCount}
+                </span>
+              )}
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => {
+                logout();
+                navigate("/auth/parent/login");
+              }}
+              aria-label="Sign out"
+            >
+              <LogOut className="h-4 w-4" aria-hidden="true" />
+              <span className="hidden sm:inline">Sign out</span>
+            </Button>
+          </div>
         </header>
 
         <div className="layout-content">

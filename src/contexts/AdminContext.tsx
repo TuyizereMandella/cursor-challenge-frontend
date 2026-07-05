@@ -1,5 +1,5 @@
 import { createContext, useContext, useMemo, type ReactNode } from "react";
-import { mockAdminUser } from "@/data/mockUsers";
+import { useAuth } from "@/contexts/AuthContext";
 import type { AdminUser } from "@/types/user";
 
 interface PlatformMetrics {
@@ -17,18 +17,28 @@ interface AdminContextValue {
 const AdminContext = createContext<AdminContextValue | null>(null);
 
 export function AdminProvider({ children }: { children: ReactNode }) {
-  const value = useMemo<AdminContextValue>(
-    () => ({
-      user: mockAdminUser,
+  const { user: authUser } = useAuth();
+
+  const value = useMemo<AdminContextValue>(() => {
+    const user: AdminUser = {
+      id: authUser?.id ?? "admin-unknown",
+      name: authUser?.name ?? "Administrator",
+      email: authUser?.email ?? "",
+      role: "Platform Administrator",
+      organization: authUser?.organization ?? "VaxReminder Health Network",
+      initials: authUser?.initials ?? "AD",
+    };
+
+    return {
+      user,
       metrics: {
         totalUsers: 12847,
         activeHospitals: 342,
         vaccinesTracked: 58,
         overdueAlerts: 127,
       },
-    }),
-    [],
-  );
+    };
+  }, [authUser]);
 
   return (
     <AdminContext.Provider value={value}>{children}</AdminContext.Provider>

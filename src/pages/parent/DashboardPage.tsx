@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { CalendarDays, Plus, UserRound } from "lucide-react";
-import { AddChildForm, EmptyState, VaccinationCardUpload } from "@/components/parent";
+import { AddChildForm, EmptyState, ParentContactSummary, VaccinationCardUpload } from "@/components/parent";
 import {
   Badge,
   Button,
@@ -20,6 +20,7 @@ import { useParentContext } from "@/contexts";
 
 export function DashboardPage() {
   const {
+    user,
     children,
     activeChild,
     activeChildId,
@@ -65,6 +66,8 @@ export function DashboardPage() {
         />
       ) : (
         <>
+          <ParentContactSummary user={user} />
+
           <div className="grid gap-4 sm:grid-cols-2">
             {children.map((child) => {
               const isActive = child.id === activeChildId;

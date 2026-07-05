@@ -1,11 +1,14 @@
-import { NavLink, Outlet } from "react-router-dom";
-import { ArrowLeft, Settings2 } from "lucide-react";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { ArrowLeft, LogOut, Settings2 } from "lucide-react";
 import { SidebarNav } from "@/components/navigation";
+import { Button } from "@/components/ui";
 import { adminNavItems } from "@/config/navigation";
-import { AdminProvider, useAdminContext } from "@/contexts";
+import { AdminProvider, useAuth, useAdminContext } from "@/contexts";
 
 function AdminLayoutShell() {
   const { user } = useAdminContext();
+  const { logout } = useAuth();
+  const navigate = useNavigate();
 
   return (
     <div className="flex min-h-screen">
@@ -37,9 +40,9 @@ function AdminLayoutShell() {
               <p className="truncate text-xs text-slate-500">{user.role}</p>
             </div>
           </div>
-          <NavLink to="/" className="nav-link text-xs text-slate-500">
+          <NavLink to="/admin/dashboard" className="nav-link text-xs text-slate-500">
             <ArrowLeft className="h-4 w-4 shrink-0" aria-hidden="true" />
-            Back to Home
+            Back to Dashboard
           </NavLink>
         </div>
       </aside>
@@ -50,6 +53,18 @@ function AdminLayoutShell() {
             <p className="text-sm font-medium text-slate-200">{user.organization}</p>
             <p className="text-xs text-slate-500">Administration Console</p>
           </div>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => {
+              logout();
+              navigate("/auth/admin/login");
+            }}
+            aria-label="Sign out"
+          >
+            <LogOut className="h-4 w-4" aria-hidden="true" />
+            Sign out
+          </Button>
         </header>
         <div className="layout-content">
           <Outlet />

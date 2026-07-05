@@ -10,7 +10,8 @@ import { generateLeadTimeNotifications, applyDemoNotificationDueDates } from "@/
 import { countDueSoonMilestones, createChildProfile } from "@/data/timelineEngine";
 import type { AddChildInput, ChildProfile, ParentUser } from "@/types/user";
 import type { AppNotification, LeadTimeDays } from "@/types/notification";
-import { mockParentUser } from "@/data/mockUsers";
+import { DEFAULT_REMINDER_CHANNELS } from "@/types/auth";
+import { useAuth } from "@/contexts/AuthContext";
 
 interface ParentContextValue {
   user: ParentUser;
@@ -39,6 +40,7 @@ function createChildId(): string {
 }
 
 export function ParentProvider({ children }: { children: ReactNode }) {
+  const { user: authUser } = useAuth();
   const [childProfiles, setChildProfiles] = useState<ChildProfile[]>([]);
   const [activeChildId, setActiveChildId] = useState<string | null>(null);
   const [notificationLeadTime, setNotificationLeadTime] = useState<LeadTimeDays>(3);
@@ -153,7 +155,14 @@ export function ParentProvider({ children }: { children: ReactNode }) {
 
   const value = useMemo<ParentContextValue>(
     () => ({
-      user: mockParentUser,
+      user: {
+        id: authUser?.id ?? "parent-unknown",
+        name: authUser?.name ?? "Parent",
+        email: authUser?.email ?? "",
+        initials: authUser?.initials ?? "PA",
+        phone: authUser?.phone ?? "",
+        reminderChannels: authUser?.reminderChannels ?? DEFAULT_REMINDER_CHANNELS,
+      },
       children: childProfiles,
       unreadReminders,
       activeChildId,
@@ -172,6 +181,7 @@ export function ParentProvider({ children }: { children: ReactNode }) {
       setVaccinationCardImage,
     }),
     [
+      authUser,
       childProfiles,
       unreadReminders,
       activeChildId,

@@ -98,4 +98,246 @@
   .text-gradient-accent {
     @apply bg-gradient-to-r from-accent-bright to-accent bg-clip-text text-transparent;
   }
+
+  .text-gradient-teal {
+    @apply bg-gradient-to-r from-teal-bright to-teal bg-clip-text text-transparent;
+  }
+}
+
+/* Healthcare theme for the parent portal — navy + teal on soft blue-gray */
+@layer components {
+  .parent-theme {
+    @apply bg-health-canvas bg-mesh-health text-health-text;
+    color-scheme: light;
+  }
+
+  .parent-theme ::selection {
+    @apply bg-teal/20 text-health-text;
+  }
+
+  .parent-theme :focus-visible {
+    @apply ring-teal-ring ring-offset-health-canvas;
+  }
+
+  .parent-theme .layout-sidebar {
+    @apply border-health-muted bg-health-surface/95 backdrop-blur-xl;
+  }
+
+  .parent-theme .layout-header {
+    @apply border-health-muted bg-health-surface/90;
+  }
+
+  .parent-theme .layout-content {
+    @apply bg-health-canvas;
+  }
+
+  .parent-theme .nav-link {
+    @apply text-health-text-muted hover:bg-health-muted/70 hover:text-health-text;
+  }
+
+  .parent-theme .nav-link-active {
+    @apply bg-teal-glow text-navy shadow-glow-teal-sm;
+    box-shadow: inset 0 0 0 1px rgba(0, 139, 155, 0.2);
+  }
+
+  .parent-theme .card {
+    @apply border-health-muted bg-health-raised shadow-health-card;
+  }
+
+  .parent-theme .card-interactive:hover {
+    @apply border-slate-300/60 shadow-health-card-hover;
+  }
+
+  .parent-theme .shadow-card {
+    @apply shadow-health-card;
+  }
+
+  /* Primary actions → navy */
+  .parent-theme .bg-accent {
+    @apply bg-navy text-white;
+  }
+
+  .parent-theme .bg-accent:hover,
+  .parent-theme .hover\:bg-accent-bright:hover {
+    @apply bg-navy-bright;
+  }
+
+  .parent-theme .bg-accent-glow {
+    @apply bg-teal-glow;
+  }
+
+  .parent-theme .text-accent-bright,
+  .parent-theme .text-accent {
+    @apply text-teal;
+  }
+
+  .parent-theme .ring-accent\/30,
+  .parent-theme .ring-accent\/20 {
+    @apply ring-teal/30;
+  }
+
+  .parent-theme .ring-accent-ring {
+    @apply ring-teal-ring;
+  }
+
+  .parent-theme .shadow-glow-sm {
+    @apply shadow-glow-teal-sm;
+  }
+
+  .parent-theme .shadow-glow {
+    @apply shadow-glow-teal;
+  }
+
+  /* Success / completed → teal sage */
+  .parent-theme .bg-accent-glow.text-accent-bright.ring-accent\/30 {
+    @apply bg-sage-glow text-sage-muted ring-sage/30;
+  }
+
+  .parent-theme .border-accent\/30,
+  .parent-theme .border-accent\/20 {
+    @apply border-teal/30;
+  }
+
+  .parent-theme .border-accent\/40 {
+    @apply border-teal/40;
+  }
+
+  .parent-theme .bg-surface-muted {
+    @apply bg-health-muted;
+  }
+
+  .parent-theme .bg-surface-raised {
+    @apply bg-health-raised;
+  }
+
+  .parent-theme .bg-surface-overlay {
+    @apply bg-health-muted/80;
+  }
+
+  .parent-theme .bg-surface {
+    @apply bg-health-surface;
+  }
+
+  .parent-theme .bg-surface\/95,
+  .parent-theme .bg-surface\/80,
+  .parent-theme .bg-surface\/60 {
+    @apply bg-health-surface/95;
+  }
+
+  .parent-theme .bg-canvas\/80 {
+    @apply bg-navy/25;
+  }
+
+  .parent-theme button.bg-surface-overlay,
+  .parent-theme .bg-surface-overlay.text-slate-200 {
+    @apply bg-health-muted text-health-text;
+  }
+
+  .parent-theme .bg-transparent.text-slate-200 {
+    @apply text-health-text;
+  }
+
+  .parent-theme .hover\:text-slate-200:hover,
+  .parent-theme .hover\:text-slate-300:hover {
+    @apply text-health-text;
+  }
+
+  .parent-theme .focus-visible\:ring-offset-canvas:focus-visible {
+    @apply ring-offset-health-canvas;
+  }
+
+  .parent-theme .placeholder\:text-slate-600::placeholder {
+    color: #94a3b8;
+  }
+
+  .parent-theme input.text-slate-100 {
+    @apply text-health-text;
+  }
+
+  .parent-theme .border-border-subtle {
+    @apply border-health-muted;
+  }
+
+  .parent-theme .border-border-strong {
+    @apply border-slate-300/70;
+  }
+
+  .parent-theme .text-slate-100,
+  .parent-theme .text-slate-200 {
+    @apply text-health-text;
+  }
+
+  .parent-theme .text-slate-300 {
+    color: #475569;
+  }
+
+  .parent-theme .text-slate-400 {
+    color: #5a6b7d;
+  }
+
+  .parent-theme .text-slate-600 {
+    color: #94a3b8;
+  }
+
+  .parent-theme .text-canvas {
+    @apply text-white;
+  }
+
+  /* Alerts → soft caution amber */
+  .parent-theme .bg-alert {
+    @apply bg-caution text-white;
+  }
+
+  .parent-theme .bg-alert-glow {
+    @apply bg-caution-glow;
+  }
+
+  .parent-theme .text-alert-bright {
+    @apply text-caution;
+  }
+
+  .parent-theme .border-alert\/30,
+  .parent-theme .border-alert\/20 {
+    @apply border-caution/30;
+  }
+
+  .parent-theme .ring-alert\/30,
+  .parent-theme .ring-alert\/40 {
+    @apply ring-caution/30;
+  }
+
+  .parent-theme .shadow-glow-alert {
+    @apply shadow-[0_0_16px_rgba(217,119,6,0.12)];
+  }
+
+  /* Info accents → teal */
+  .parent-theme .bg-info {
+    @apply bg-teal text-white;
+  }
+
+  .parent-theme .bg-info-glow {
+    @apply bg-teal-glow;
+  }
+
+  .parent-theme .text-info-bright {
+    @apply text-teal-muted;
+  }
+
+  .parent-theme .ring-info\/30,
+  .parent-theme .ring-info\/40 {
+    @apply ring-teal/25;
+  }
+
+  .parent-theme .border-info\/20 {
+    @apply border-teal/20;
+  }
+
+  /* Bottom mobile nav */
+  .parent-theme .fixed.inset-x-0.bottom-0 {
+    @apply border-health-muted bg-health-surface/95;
+  }
+
+  .parent-theme .group-\[\[aria-current\=page\]\]\:drop-shadow-\[0_0_6px_rgba\(16\,185\,129\,0\.5\)\] {
+    filter: drop-shadow(0 0 6px rgba(0, 139, 155, 0.45));
+  }
 }

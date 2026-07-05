@@ -10,6 +10,8 @@ export const mockParentUser: ParentUser = {
   name: "Sarah Chen",
   email: "sarah.chen@email.com",
   initials: "SC",
+  phone: "+1 (555) 234-8891",
+  reminderChannels: { sms: true, email: true, inApp: true },
 };
 
 const emma = applyInitialMilestoneStates(

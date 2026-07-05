@@ -1,10 +1,13 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
+import { GuestRoute, ProtectedRoute } from "@/components/auth";
 import {
   AdminLayout,
+  AuthLayout,
   LandingLayout,
   ParentLayout,
   RootLayout,
 } from "@/layouts";
+import { LoginPage, RegisterPage } from "@/pages/auth";
 import { LandingPage } from "@/pages/LandingPage";
 import {
   AdminDashboardPage,
@@ -27,8 +30,50 @@ export const router = createBrowserRouter([
         children: [{ index: true, element: <LandingPage /> }],
       },
       {
+        path: "auth",
+        element: <AuthLayout />,
+        children: [
+          {
+            path: "parent/login",
+            element: (
+              <GuestRoute role="parent">
+                <LoginPage role="parent" />
+              </GuestRoute>
+            ),
+          },
+          {
+            path: "parent/register",
+            element: (
+              <GuestRoute role="parent">
+                <RegisterPage role="parent" />
+              </GuestRoute>
+            ),
+          },
+          {
+            path: "admin/login",
+            element: (
+              <GuestRoute role="admin">
+                <LoginPage role="admin" />
+              </GuestRoute>
+            ),
+          },
+          {
+            path: "admin/register",
+            element: (
+              <GuestRoute role="admin">
+                <RegisterPage role="admin" />
+              </GuestRoute>
+            ),
+          },
+        ],
+      },
+      {
         path: "parent",
-        element: <ParentLayout />,
+        element: (
+          <ProtectedRoute role="parent">
+            <ParentLayout />
+          </ProtectedRoute>
+        ),
         children: [
           { index: true, element: <Navigate to="dashboard" replace /> },
           { path: "dashboard", element: <DashboardPage /> },
@@ -39,7 +84,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "admin",
-        element: <AdminLayout />,
+        element: (
+          <ProtectedRoute role="admin">
+            <AdminLayout />
+          </ProtectedRoute>
+        ),
         children: [
           { index: true, element: <Navigate to="dashboard" replace /> },
           { path: "dashboard", element: <AdminDashboardPage /> },

@@ -11,28 +11,28 @@ export function RootLayout() {
 
 export function LandingLayout() {
   return (
-    <div className="flex min-h-screen flex-col">
-      <header className="flex h-16 items-center justify-between border-b border-border-subtle px-6 lg:px-10">
+    <div className="parent-theme flex min-h-screen flex-col bg-health-canvas bg-mesh-health text-health-text">
+      <header className="flex h-16 items-center justify-between border-b border-health-muted bg-health-surface/90 px-6 backdrop-blur-xl lg:px-10">
         <div className="flex items-center gap-2.5">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent-glow ring-1 ring-accent/30">
-            <Syringe className="h-4 w-4 text-accent-bright" aria-hidden="true" />
+          <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-teal-glow ring-1 ring-teal/30">
+            <Syringe className="h-4 w-4 text-teal" aria-hidden="true" />
           </div>
-          <span className="text-sm font-semibold tracking-tight text-slate-100">
+          <span className="text-sm font-semibold tracking-tight text-navy">
             VaxReminder
           </span>
         </div>
-        <nav aria-label="Landing navigation" className="flex items-center gap-4">
+        <nav aria-label="Landing navigation" className="flex items-center gap-3">
           <NavLink
-            to="/parent"
-            className="text-sm font-medium text-slate-400 transition-colors hover:text-slate-200"
+            to="/auth/parent/login"
+            className="text-sm font-medium text-health-text-muted transition-colors hover:text-teal"
           >
-            Parent Portal
+            Sign In
           </NavLink>
           <NavLink
-            to="/admin"
-            className="rounded-lg bg-surface-raised px-4 py-2 text-sm font-medium text-slate-200 ring-1 ring-border-subtle transition-all hover:ring-border-strong"
+            to="/auth/parent/register"
+            className="rounded-full bg-navy px-4 py-2 text-sm font-medium text-white shadow-health-card transition-all hover:bg-navy-bright"
           >
-            Admin Workspace
+            Register
           </NavLink>
         </nav>
       </header>
