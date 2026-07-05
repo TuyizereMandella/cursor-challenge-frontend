@@ -417,12 +417,12 @@
   color: #5A6B7D !important;
 }
 
-.auth-form-container label.border-border-subtle {
+.auth-form-container fieldset label {
   border-color: #E2E8F0 !important;
   background-color: #F8FAFC !important;
 }
 
-.auth-form-container label.border-accent\/30 {
+.auth-form-container fieldset label.border-accent\/30 {
   border-color: rgba(0, 139, 155, 0.3) !important;
   background-color: rgba(0, 139, 155, 0.04) !important;
 }
